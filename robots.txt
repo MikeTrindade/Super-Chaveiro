@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Adicione a linha Sitemap com a URL absoluta após definir o domínio final.
+Sitemap: https://superchaveiro.com.br/sitemap.xml
