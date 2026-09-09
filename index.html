@@ -27,9 +27,10 @@
   <link rel="manifest" href="favicon/site.webmanifest">
 
   <link rel="preload" as="image" href="assets/images/hero-smart-key.webp" fetchpriority="high">
-  <link rel="preload" as="video" href="assets/videos/chave-programacao.mp4" type="video/mp4">
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
   <link rel="stylesheet" href="assets/styles.css">
 
+  <!-- Ao definir o domínio final, adicionar canonical e og:url absolutos. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -124,9 +125,8 @@
   <main id="conteudo">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-media" aria-hidden="true">
-        <img class="motion-base motion-base-hero" src="assets/images/hero-smart-key.webp" width="1672" height="941" alt="" fetchpriority="high" decoding="async">
         <video class="ambient-video hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/hero-smart-key.webp" data-autoplay-video data-priority-video>
-          <source src="assets/videos/chave-programacao.mp4" type="video/mp4">
+          <source src="https://res.cloudinary.com/tpdvdi9t/video/upload/v1788957051/download.mp4" type="video/mp4">
         </video>
       </div>
       <div class="hero-overlay"></div>
@@ -159,44 +159,153 @@
           <h2 id="servicos-title">Serviços de chaveiro em Sorocaba</h2>
           <p>Atendimento para residências e veículos, com estrutura móvel para ir até você em Sorocaba e região.</p>
         </div>
+
         <div class="service-feature-grid">
-          <article class="service-feature"><img src="assets/images/servico-residencial.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Instalação de fechadura digital residencial"><div class="service-feature-body"><p class="card-kicker">Residencial</p><h3>Chaveiro residencial</h3><ul class="check-list"><li>Abertura de portas e fechaduras</li><li>Cópias de chaves simples e tetra</li><li>Troca de segredo e conserto de fechaduras</li><li>Instalação de fechaduras simples, tetra e digitais</li></ul><a class="text-link" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20de%20chaveiro%20residencial." target="_blank" rel="noopener">Solicitar atendimento residencial <span aria-hidden="true">→</span></a></div></article>
-          <article class="service-feature"><img src="assets/images/servico-automotivo.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Chave automotiva moderna para serviço de chaveiro automotivo"><div class="service-feature-body"><p class="card-kicker">Automotivo</p><h3>Chaveiro automotivo</h3><ul class="check-list"><li>Abertura de carros nacionais e importados</li><li>Cópia e confecção de chaves simples e codificadas</li><li>Chaves canivete e controles automotivos</li><li>Reparo em cilindro de ignição, porta e trava de direção</li></ul><a class="text-link" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20de%20chaveiro%20automotivo." target="_blank" rel="noopener">Solicitar atendimento automotivo <span aria-hidden="true">→</span></a></div></article>
+          <article class="service-feature">
+            <img src="assets/images/servico-residencial.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Instalação de fechadura digital residencial">
+            <div class="service-feature-body">
+              <p class="card-kicker">Residencial</p>
+              <h3>Chaveiro residencial</h3>
+              <ul class="check-list">
+                <li>Abertura de portas e fechaduras</li>
+                <li>Cópias de chaves simples e tetra</li>
+                <li>Troca de segredo e conserto de fechaduras</li>
+                <li>Instalação de fechaduras simples, tetra e digitais</li>
+              </ul>
+              <a class="text-link" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20de%20chaveiro%20residencial." target="_blank" rel="noopener">Solicitar atendimento residencial <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="service-feature">
+            <img src="assets/images/servico-automotivo.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Chave automotiva moderna para serviço de chaveiro automotivo">
+            <div class="service-feature-body">
+              <p class="card-kicker">Automotivo</p>
+              <h3>Chaveiro automotivo</h3>
+              <ul class="check-list">
+                <li>Abertura de carros nacionais e importados</li>
+                <li>Cópia e confecção de chaves simples e codificadas</li>
+                <li>Chaves canivete e controles automotivos</li>
+                <li>Reparo em cilindro de ignição, porta e trava de direção</li>
+              </ul>
+              <a class="text-link" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20preciso%20de%20um%20servi%C3%A7o%20de%20chaveiro%20automotivo." target="_blank" rel="noopener">Solicitar atendimento automotivo <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
         </div>
+
         <div class="service-cards" aria-label="Serviços em destaque">
-          <article class="mini-card"><img src="assets/images/abertura-residencial.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Técnico realizando abertura de porta residencial"><div><h3>Abertura residencial</h3><p>Soluções para portas e fechaduras com atendimento no local.</p></div></article>
-          <article class="mini-card"><img src="assets/images/fechadura-digital.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Instalação de fechadura digital em residência"><div><h3>Fechaduras digitais</h3><p>Instalação de modelos eletrônicos para modernizar o acesso da sua casa.</p></div></article>
-          <article class="mini-card"><img src="assets/images/chave-codificada.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Equipamento para programação de chave codificada automotiva"><div><h3>Chaves codificadas</h3><p>Confecção, cópia e programação de chaves para veículos nacionais e importados.</p></div></article>
+          <article class="mini-card">
+            <img src="assets/images/abertura-residencial.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Técnico realizando abertura de porta residencial">
+            <div><h3>Abertura residencial</h3><p>Soluções para portas e fechaduras com atendimento no local.</p></div>
+          </article>
+          <article class="mini-card">
+            <img src="assets/images/fechadura-digital.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Instalação de fechadura digital em residência">
+            <div><h3>Fechaduras digitais</h3><p>Instalação de modelos eletrônicos para modernizar o acesso da sua casa.</p></div>
+          </article>
+          <article class="mini-card">
+            <img src="assets/images/chave-codificada.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Equipamento para programação de chave codificada automotiva">
+            <div><h3>Chaves codificadas</h3><p>Confecção, cópia e programação de chaves para veículos nacionais e importados.</p></div>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section why" id="diferenciais" aria-labelledby="diferenciais-title">
       <div class="container split-layout">
-        <div class="split-media"><img src="assets/images/equipe-frota.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Equipe uniformizada e veículos padronizados da Super Chaveiro Sorocaba"><div class="experience-badge"><strong>Desde 2012</strong><span>atendendo Sorocaba</span></div></div>
-        <div class="split-copy"><p class="eyebrow">Confiança e estrutura</p><h2 id="diferenciais-title">Uma equipe preparada para atender onde você estiver</h2><p>Experiência, mobilidade e apresentação profissional para atender demandas residenciais e automotivas com praticidade.</p><div class="benefit-list">
-          <div class="benefit"><span class="benefit-icon">01</span><div><h3>3 unidades móveis</h3><p>Veículos equipados e padronizados para atendimento externo em Sorocaba e região.</p></div></div>
-          <div class="benefit"><span class="benefit-icon">02</span><div><h3>Equipe uniformizada</h3><p>Identificação visual clara para mais confiança durante o atendimento no local.</p></div></div>
-          <div class="benefit"><span class="benefit-icon">03</span><div><h3>Atendimento todos os dias</h3><p>Disponibilidade de segunda a domingo, das 8h às 22h.</p></div></div>
-          <div class="benefit"><span class="benefit-icon">04</span><div><h3>Pagamento facilitado</h3><p>Pix, cartões de crédito e débito ou dinheiro. Desconto de 5% para pagamento à vista via Pix ou dinheiro.</p></div></div>
-        </div></div>
+        <div class="split-media">
+          <img src="assets/images/equipe-frota.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Equipe uniformizada e veículos padronizados da Super Chaveiro Sorocaba">
+          <div class="experience-badge"><strong>Desde 2012</strong><span>atendendo Sorocaba</span></div>
+        </div>
+        <div class="split-copy">
+          <p class="eyebrow">Confiança e estrutura</p>
+          <h2 id="diferenciais-title">Uma equipe preparada para atender onde você estiver</h2>
+          <p>Experiência, mobilidade e apresentação profissional para atender demandas residenciais e automotivas com praticidade.</p>
+          <div class="benefit-list">
+            <div class="benefit"><span class="benefit-icon">01</span><div><h3>3 unidades móveis</h3><p>Veículos equipados e padronizados para atendimento externo em Sorocaba e região.</p></div></div>
+            <div class="benefit"><span class="benefit-icon">02</span><div><h3>Equipe uniformizada</h3><p>Identificação visual clara para mais confiança durante o atendimento no local.</p></div></div>
+            <div class="benefit"><span class="benefit-icon">03</span><div><h3>Atendimento todos os dias</h3><p>Disponibilidade de segunda a domingo, das 8h às 22h.</p></div></div>
+            <div class="benefit"><span class="benefit-icon">04</span><div><h3>Pagamento facilitado</h3><p>Pix, cartões de crédito e débito ou dinheiro. Desconto de 5% para pagamento à vista via Pix ou dinheiro.</p></div></div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section coverage" id="atendimento" aria-labelledby="atendimento-title"><div class="container"><div class="coverage-box"><div><p class="eyebrow">Atendimento móvel</p><h2 id="atendimento-title">Chaveiro em Sorocaba e região</h2><p>Precisa de atendimento na residência, no trabalho ou junto ao veículo? Entre em contato e informe sua localização e o serviço necessário.</p></div><div class="coverage-actions"><a class="button button-primary" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20em%20Sorocaba.%20Minha%20localiza%C3%A7%C3%A3o%20%C3%A9%3A%20" target="_blank" rel="noopener">Enviar localização pelo WhatsApp</a><p><strong>Atendimento:</strong> todos os dias, 8h às 22h</p></div></div></div></section>
-
-    <section class="cta-section" aria-label="Solicite atendimento">
-      <img class="cta-bg motion-base motion-base-cta" src="assets/images/cta.webp" width="1672" height="941" loading="lazy" decoding="async" alt="">
-      <video class="cta-bg ambient-video cta-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/cta.webp" data-autoplay-video aria-hidden="true"><source src="assets/videos/atendimento-em-acao.mp4" type="video/mp4"></video>
-      <div class="cta-overlay"></div><div class="container cta-content"><p class="eyebrow">Precisa de um chaveiro?</p><h2>Fale agora com a Super Chaveiro Sorocaba</h2><p>Envie uma mensagem com o tipo de serviço e sua localização para agilizar o atendimento.</p><div class="hero-actions"><a class="button button-primary" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento no WhatsApp</a><a class="button button-secondary" href="tel:+5515996841263">(15) 99684-1263</a></div></div>
+    <section class="section coverage" id="atendimento" aria-labelledby="atendimento-title">
+      <div class="container">
+        <div class="coverage-box">
+          <div>
+            <p class="eyebrow">Atendimento móvel</p>
+            <h2 id="atendimento-title">Chaveiro em Sorocaba e região</h2>
+            <p>Precisa de atendimento na residência, no trabalho ou junto ao veículo? Entre em contato e informe sua localização e o serviço necessário.</p>
+          </div>
+          <div class="coverage-actions">
+            <a class="button button-primary" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20em%20Sorocaba.%20Minha%20localiza%C3%A7%C3%A3o%20%C3%A9%3A%20" target="_blank" rel="noopener">Enviar localização pelo WhatsApp</a>
+            <p><strong>Atendimento:</strong> todos os dias, 8h às 22h</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section contact" id="contato" aria-labelledby="contato-title"><div class="container contact-grid"><div><p class="eyebrow">Contato</p><h2 id="contato-title">Super Chaveiro Sorocaba</h2><p class="contact-intro">Atendimento residencial e automotivo com base em Sorocaba e deslocamento para a região.</p></div><div class="contact-cards"><a class="contact-card" href="tel:+5515996841263"><span>Telefone e WhatsApp</span><strong>(15) 99684-1263</strong></a><a class="contact-card" href="mailto:superchaveirosorocaba@gmail.com"><span>E-mail</span><strong>superchaveirosorocaba@gmail.com</strong></a><a class="contact-card" href="https://www.google.com/maps/search/?api=1&query=Volunt%C3%A1rios%20de%20Sorocaba%2C%20191%2C%20sala%205%2C%20Sorocaba%2C%20SP" target="_blank" rel="noopener"><span>Endereço</span><strong>Voluntários de Sorocaba, 191, sala 5 — Sorocaba/SP</strong></a><a class="contact-card" href="https://www.instagram.com/superchaveirosorocaba/" target="_blank" rel="noopener"><span>Instagram</span><strong>@superchaveirosorocaba</strong></a></div></div></section>
+    <section class="cta-section" aria-label="Solicite atendimento">
+      <img class="cta-bg" src="assets/images/cta.webp" width="1672" height="941" loading="lazy" decoding="async" alt="">
+      <div class="cta-overlay"></div>
+      <div class="container cta-content">
+        <p class="eyebrow">Precisa de um chaveiro?</p>
+        <h2>Fale agora com a Super Chaveiro Sorocaba</h2>
+        <p>Envie uma mensagem com o tipo de serviço e sua localização para agilizar o atendimento.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Pedir orçamento no WhatsApp</a>
+          <a class="button button-secondary" href="tel:+5515996841263">(15) 99684-1263</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contato" aria-labelledby="contato-title">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2 id="contato-title">Super Chaveiro Sorocaba</h2>
+          <p class="contact-intro">Atendimento residencial e automotivo com base em Sorocaba e deslocamento para a região.</p>
+        </div>
+        <div class="contact-cards">
+          <a class="contact-card" href="tel:+5515996841263">
+            <span>Telefone e WhatsApp</span>
+            <strong>(15) 99684-1263</strong>
+          </a>
+          <a class="contact-card" href="mailto:superchaveirosorocaba@gmail.com">
+            <span>E-mail</span>
+            <strong>superchaveirosorocaba@gmail.com</strong>
+          </a>
+          <a class="contact-card" href="https://www.google.com/maps/search/?api=1&query=Volunt%C3%A1rios%20de%20Sorocaba%2C%20191%2C%20sala%205%2C%20Sorocaba%2C%20SP" target="_blank" rel="noopener">
+            <span>Endereço</span>
+            <strong>Voluntários de Sorocaba, 191, sala 5 — Sorocaba/SP</strong>
+          </a>
+          <a class="contact-card" href="https://www.instagram.com/superchaveirosorocaba/" target="_blank" rel="noopener">
+            <span>Instagram</span>
+            <strong>@superchaveirosorocaba</strong>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><img src="assets/branding/logo-super-chaveiro-branco.webp" width="720" height="240" loading="lazy" decoding="async" alt="Super Chaveiro Sorocaba"><p>Serviços de chaveiro residencial e automotivo em Sorocaba e região.</p></div><div><h2>Serviços</h2><a href="#servicos">Residencial</a><a href="#servicos">Automotivo</a><a href="#servicos">Chaves codificadas</a><a href="#servicos">Fechaduras digitais</a></div><div><h2>Atendimento</h2><p>Segunda a domingo<br>8h às 22h</p><a href="tel:+5515996841263">(15) 99684-1263</a></div></div><div class="container footer-bottom"><p>© <span id="ano-atual">2026</span> Super Chaveiro Sorocaba. Todos os direitos reservados.</p><a href="#topo">Voltar ao topo ↑</a></div></footer>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/branding/logo-super-chaveiro-branco.webp" width="720" height="240" loading="lazy" decoding="async" alt="Super Chaveiro Sorocaba">
+        <p>Serviços de chaveiro residencial e automotivo em Sorocaba e região.</p>
+      </div>
+      <div><h2>Serviços</h2><a href="#servicos">Residencial</a><a href="#servicos">Automotivo</a><a href="#servicos">Chaves codificadas</a><a href="#servicos">Fechaduras digitais</a></div>
+      <div><h2>Atendimento</h2><p>Segunda a domingo<br>8h às 22h</p><a href="tel:+5515996841263">(15) 99684-1263</a></div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="ano-atual">2026</span> Super Chaveiro Sorocaba. Todos os direitos reservados.</p>
+      <a href="#topo">Voltar ao topo ↑</a>
+    </div>
+  </footer>
 
-  <a class="floating-whatsapp" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Super%20Chaveiro%20Sorocaba." target="_blank" rel="noopener" aria-label="Abrir conversa no WhatsApp"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4h.1C18.7 23.7 24 18.4 24 11.9c0-3.2-1.2-6.1-3.5-8.4Z"/></svg></a>
+  <a class="floating-whatsapp" href="https://wa.me/5515996841263?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Super%20Chaveiro%20Sorocaba." target="_blank" rel="noopener" aria-label="Abrir conversa no WhatsApp">
+    <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.6 1.4h.1C18.7 23.7 24 18.4 24 11.9c0-3.2-1.2-6.1-3.5-8.4Zm-8.4 18.2c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4a9.8 9.8 0 1 1 8.4 4.7Zm5.4-7.3c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-1.8-.9-3-1.7-4.2-3.8-.3-.6.3-.6.9-1.9.1-.2 0-.4 0-.6l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.5c.1.2 2.5 3.8 6 5.3 2.2.9 3 .9 4.1.8.7-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3Z"/></svg>
+  </a>
 
   <script src="assets/script.js" defer></script>
 </body>
