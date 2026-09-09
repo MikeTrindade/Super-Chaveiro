@@ -41,10 +41,12 @@ svg { width: 1em; height: 1em; fill: currentColor; }
 .menu-toggle span { display: block; height: 2px; margin: 5px 0; background: #fff; border-radius: 2px; }
 .hero { position: relative; min-height: 760px; display: flex; align-items: center; overflow: hidden; padding: 142px 0 64px; }
 .hero-media, .hero-overlay { position: absolute; inset: 0; }
-.hero-media .ambient-video { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; transform: scale(1.015); }
+.hero-media .motion-base, .hero-media .ambient-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+.hero-media .motion-base { z-index: 0; }
+.hero-media .ambient-video { z-index: 1; opacity: .38; transform: scale(1.005); }
 .hero-overlay { background: linear-gradient(90deg, rgba(2,4,8,.98) 0%, rgba(2,4,8,.94) 32%, rgba(2,4,8,.58) 58%, rgba(2,4,8,.18) 100%), linear-gradient(0deg, rgba(5,7,10,.85) 0%, transparent 30%); }
 .ambient-video { background: #091019; }
-.hero-video { filter: saturate(1.02) contrast(1.03); }
+.hero-video { filter: saturate(1.06) contrast(1.04); mix-blend-mode: screen; }
 .hero-content { position: relative; z-index: 2; }
 .hero h1 { max-width: 780px; margin: 0; font-size: clamp(2.7rem, 6vw, 5.3rem); line-height: .97; letter-spacing: -.058em; text-wrap: balance; }
 .hero-lead { max-width: 660px; margin: 24px 0 0; color: #c9d2df; font-size: clamp(1.05rem, 2vw, 1.28rem); }
@@ -98,9 +100,10 @@ svg { width: 1em; height: 1em; fill: currentColor; }
 .cta-section { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; }
 .cta-bg, .cta-overlay { position: absolute; inset: 0; width: 100%; height: 100%; }
 .cta-bg { object-fit: cover; object-position: center; }
-.cta-video { filter: saturate(.96) contrast(1.04); transform: scale(1.01); }
-.cta-overlay { background: linear-gradient(90deg, rgba(3,5,9,.98), rgba(3,5,9,.78) 58%, rgba(3,5,9,.28)); }
-.cta-content { position: relative; z-index: 2; }
+.motion-base-cta { z-index: 0; }
+.cta-video { z-index: 1; opacity: .42; filter: saturate(1.02) contrast(1.05); transform: scale(1.005); mix-blend-mode: screen; }
+.cta-overlay { z-index: 2; background: linear-gradient(90deg, rgba(3,5,9,.98), rgba(3,5,9,.80) 58%, rgba(3,5,9,.34)); }
+.cta-content { position: relative; z-index: 3; }
 .cta-content h2 { max-width: 720px; }
 .cta-content > p { max-width: 620px; }
 .contact { background: #080b10; }
@@ -143,7 +146,8 @@ svg { width: 1em; height: 1em; fill: currentColor; }
   .brand img { width: 190px; }
   .main-nav { top: 72px; left: 14px; right: 14px; }
   .hero { min-height: 720px; padding: 122px 0 46px; align-items: flex-end; }
-  .hero-media .ambient-video { object-position: 64% center; }
+  .hero-media .motion-base, .hero-media .ambient-video { object-position: 64% center; }
+  .hero-media .ambient-video { opacity: .30; }
   .hero-overlay { background: linear-gradient(0deg, rgba(3,5,9,.99) 0%, rgba(3,5,9,.92) 38%, rgba(3,5,9,.44) 72%, rgba(3,5,9,.18) 100%), linear-gradient(90deg, rgba(3,5,9,.45), transparent); }
   .hero h1 { font-size: clamp(2.5rem, 12vw, 4rem); }
   .hero-lead { font-size: 1rem; }
@@ -158,6 +162,7 @@ svg { width: 1em; height: 1em; fill: currentColor; }
   .coverage { padding: 52px 0; }
   .coverage-box { padding: 28px 22px; }
   .cta-section { min-height: 580px; align-items: flex-end; padding: 78px 0 56px; }
+  .cta-video { opacity: .30; }
   .cta-overlay { background: linear-gradient(0deg, rgba(3,5,9,.98), rgba(3,5,9,.80) 62%, rgba(3,5,9,.25)); }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 8px; }
@@ -166,5 +171,5 @@ svg { width: 1em; height: 1em; fill: currentColor; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-  .ambient-video { animation: none !important; }
+  .ambient-video { animation: none !important; opacity: 0 !important; }
 }
