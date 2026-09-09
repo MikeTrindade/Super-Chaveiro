@@ -1,6 +1,6 @@
 (() => {
   const SITE_URL = 'https://superchaveiro.com.br/';
-  const SOCIAL_IMAGE = 'https://superchaveiro.com.br/favicon/android-chrome-512x512.png';
+  const SOCIAL_IMAGE = 'https://superchaveiro.com.br/assets/images/hero-smart-key.webp';
 
   const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.main-nav');
@@ -24,14 +24,60 @@
   const year = document.getElementById('ano-atual');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  // Atualiza a condição comercial exibida no site.
   document.querySelectorAll('.benefit p').forEach((p) => {
     if (p.textContent.includes('Desconto de 10%')) {
       p.textContent = 'Pix, cartões de crédito e débito ou dinheiro. Desconto de 5% para pagamento à vista via Pix ou dinheiro.';
     }
   });
 
-  // SEO técnico do domínio definitivo.
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ambientVideos = [...document.querySelectorAll('[data-autoplay-video]')];
+
+  const safePlay = (video) => {
+    if (reducedMotion.matches || document.hidden) return;
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+  };
+
+  const syncMotionPreference = () => {
+    ambientVideos.forEach((video) => {
+      if (reducedMotion.matches) {
+        video.pause();
+        try { video.currentTime = 0; } catch (_) {}
+      } else if (video.hasAttribute('data-priority-video')) {
+        safePlay(video);
+      }
+    });
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (reducedMotion.matches) {
+          video.pause();
+          return;
+        }
+        if (entry.isIntersecting) safePlay(video);
+        else if (!video.hasAttribute('data-priority-video')) video.pause();
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.05 });
+    ambientVideos.forEach((video) => observer.observe(video));
+  } else {
+    ambientVideos.forEach(safePlay);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    ambientVideos.forEach((video) => {
+      if (document.hidden) video.pause();
+      else if (!reducedMotion.matches && (video.hasAttribute('data-priority-video') || video.getBoundingClientRect().top < innerHeight + 200)) safePlay(video);
+    });
+  });
+
+  syncMotionPreference();
+  if (typeof reducedMotion.addEventListener === 'function') reducedMotion.addEventListener('change', syncMotionPreference);
+  else if (typeof reducedMotion.addListener === 'function') reducedMotion.addListener(syncMotionPreference);
+
   const ensureLink = (rel, href) => {
     let el = document.head.querySelector(`link[rel="${rel}"]`);
     if (!el) {
@@ -56,16 +102,15 @@
   ensureMeta('property', 'og:url', SITE_URL);
   ensureMeta('property', 'og:image', SOCIAL_IMAGE);
   ensureMeta('property', 'og:image:secure_url', SOCIAL_IMAGE);
-  ensureMeta('property', 'og:image:type', 'image/png');
-  ensureMeta('property', 'og:image:width', '512');
-  ensureMeta('property', 'og:image:height', '512');
-  ensureMeta('property', 'og:image:alt', 'Logotipo da Super Chaveiro Sorocaba');
+  ensureMeta('property', 'og:image:type', 'image/webp');
+  ensureMeta('property', 'og:image:width', '1280');
+  ensureMeta('property', 'og:image:height', '720');
+  ensureMeta('property', 'og:image:alt', 'Programação de chave automotiva na Super Chaveiro Sorocaba');
   ensureMeta('name', 'twitter:card', 'summary_large_image');
   ensureMeta('name', 'twitter:title', 'Chaveiro em Sorocaba | Super Chaveiro Sorocaba');
   ensureMeta('name', 'twitter:description', 'Serviços de chaveiro residencial e automotivo em Sorocaba e região. Atendimento todos os dias, das 8h às 22h.');
   ensureMeta('name', 'twitter:image', SOCIAL_IMAGE);
 
-  // Completa o JSON-LD existente com URLs absolutas e dados do domínio final.
   const schemaEl = document.querySelector('script[type="application/ld+json"]');
   if (schemaEl) {
     try {
@@ -75,7 +120,8 @@
       schema.logo = `${SITE_URL}assets/branding/logo-super-chaveiro.webp`;
       schema.image = [
         `${SITE_URL}assets/images/equipe-frota.webp`,
-        `${SITE_URL}assets/images/hero-smart-key.webp`
+        `${SITE_URL}assets/images/hero-smart-key.webp`,
+        `${SITE_URL}assets/images/cta.webp`
       ];
       schema.paymentAccepted = 'Pix, cartão de crédito, cartão de débito e dinheiro; 5% de desconto para pagamento à vista via Pix ou dinheiro';
       schema.priceRange = '$$';
@@ -84,7 +130,6 @@
     } catch (_) {}
   }
 
-  // Inclui acesso à política de privacidade no rodapé sem alterar o layout principal.
   const footerBottom = document.querySelector('.footer-bottom');
   if (footerBottom && !footerBottom.querySelector('a[href*="politica-de-privacidade"]')) {
     const privacy = document.createElement('a');
@@ -95,8 +140,6 @@
     else footerBottom.appendChild(privacy);
   }
 
-  // Eventos de conversão preparados para GA4. Passam a ser enviados assim que
-  // o Google tag (gtag.js) for configurado com um Measurement ID válido.
   const track = (eventName, params = {}) => {
     if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
   };
@@ -109,7 +152,6 @@
       link_url: link.href,
       link_text: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100)
     };
-
     if (href.startsWith('https://wa.me/')) track('whatsapp_click', common);
     else if (href.startsWith('tel:')) track('phone_click', common);
     else if (href.includes('google.com/maps')) track('maps_click', common);
