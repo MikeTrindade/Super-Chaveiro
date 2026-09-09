@@ -24,6 +24,70 @@
   const year = document.getElementById('ano-atual');
   if (year) year.textContent = String(new Date().getFullYear());
 
+  // Faixa de movimento integrada entre Serviços e Diferenciais.
+  const servicesSection = document.getElementById('servicos');
+  if (servicesSection && !document.querySelector('.motion-showcase')) {
+    const motionSection = document.createElement('section');
+    motionSection.className = 'motion-showcase';
+    motionSection.setAttribute('aria-label', 'Atendimento Super Chaveiro em movimento');
+    motionSection.innerHTML = `
+      <div class="motion-showcase-frame">
+        <video class="ambient-video motion-showcase-video" autoplay muted loop playsinline preload="metadata" data-autoplay-video aria-hidden="true">
+          <source src="https://res.cloudinary.com/tpdvdi9t/video/upload/v1788957370/download_1.mp4" type="video/mp4">
+        </video>
+        <div class="motion-showcase-shade" aria-hidden="true"></div>
+      </div>
+    `;
+    servicesSection.insertAdjacentElement('afterend', motionSection);
+
+    const motionStyle = document.createElement('style');
+    motionStyle.textContent = `
+      .motion-showcase {
+        padding: 46px 0 70px;
+        background: #05070a;
+        overflow: hidden;
+      }
+      .motion-showcase-frame {
+        position: relative;
+        width: min(1360px, calc(100% - 40px));
+        height: clamp(280px, 31vw, 440px);
+        margin: 0 auto;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,.08);
+        border-radius: 22px;
+        background: #080c12;
+        box-shadow: 0 24px 80px rgba(0,0,0,.38);
+      }
+      .motion-showcase-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transform: scale(1.005);
+      }
+      .motion-showcase-shade {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(90deg, rgba(5,7,10,.18), transparent 18%, transparent 82%, rgba(5,7,10,.18)),
+          linear-gradient(0deg, rgba(5,7,10,.16), transparent 28%);
+      }
+      @media (max-width: 760px) {
+        .motion-showcase { padding: 28px 0 42px; }
+        .motion-showcase-frame {
+          width: calc(100% - 28px);
+          height: clamp(210px, 58vw, 310px);
+          border-radius: 16px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .motion-showcase-video { opacity: .96; }
+      }
+    `;
+    document.head.appendChild(motionStyle);
+  }
+
   document.querySelectorAll('.benefit p').forEach((p) => {
     if (p.textContent.includes('Desconto de 10%')) {
       p.textContent = 'Pix, cartões de crédito e débito ou dinheiro. Desconto de 5% para pagamento à vista via Pix ou dinheiro.';
